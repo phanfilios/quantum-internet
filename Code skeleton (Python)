@@ -1,0 +1,50 @@
+import numpy as np
+from brian2 import *
+from qiskit import QuantumCircuit, Aer, execute
+from qiskit.quantum_info import DensityMatrix, partial_trace, state_fidelity
+
+
+start_scope()
+N = 1000
+tau = 10*ms
+eqs = '''
+dv/dt = (-(v - -65*mV) + I)/tau : volt
+I : volt
+'''
+G = NeuronGroup(N, eqs, threshold='v>-50*mV', reset='v=-65*mV', method='euler')
+G.v = -65*mV
+# random sparse connectivity
+p_conn = 0.02
+W = sprand(N, N, p_conn) # scipy sparse
+S = Synapses(G, G, on_pre='I += 1.0*mV')
+S.connect(condition='i!=j', p=p_conn)
+
+# monitors
+spikemon = SpikeMonitor(G)
+statemon = StateMonitor(G, 'v', record=np.arange(10))
+
+
+backend = Aer.get_backend('aer_simulator_density_matrix')
+nq = 8
+rho = DensityMatrix.from_label('0'*nq)  # initial |00..0>
+
+def apply_control_rotation(rho, theta, target=0):
+    qc = QuantumCircuit(nq)
+    qc.ry(theta, target)
+    # convert to unitary and apply on density matrix
+    # easier: use Aer to evolve statevector/density
+    job = execute(qc, backend, shots=1, density_matrix=True)
+    result = job.result()
+    # NOTE: real code should apply channel on density matrix OR use qiskit.quantum_info.Operator
+    return rho  # placeholder
+
+
+run_time = 1.0*second
+dt = 0.1*ms
+defaultclock.dt = dt
+
+# run in steps and couple every T_w
+T_w = 10*ms
+next_couple = T_w
+
+run(run_time)
