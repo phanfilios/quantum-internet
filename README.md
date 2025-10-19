@@ -37,7 +37,35 @@ As quantum information is transmitted, it is necessary to control decoherence (l
 
 It is the development of specific protocols for quantum communication, such as the BB84 protocol for quantum key distribution, which take advantage of the unique properties of the quantum system.
 
+
+
 ## INTEGRATED QUANTUM COMPUTING
 
 The quantum Internet could work together with quantum computers that might be entangled with our central nervous system and connected to our brain, or they could be modest physical devices like quantum computers. These computers would be capable of running quantum algorithms over the network and accessing basic computational resources. In summary, in theory, it would be software almost similar to Windows or Linux, iOS, but specialized and adapted to the new quantum network.
+
+## QUANTUM MECHANICS
+
+Quantum mechanics is a branch of physics that deals with microscopic studies; this theory was developed in the 20th century to describe and understand behavior that cannot be explained by classical physics.
+
+## CHARACTERISTICS THAT MAKE QUANTUM MECHANICS STAND OUT
+
+## 1. QUANTIZATION: 
+
+Physical quantities, such as energy, are quantized, which means they can only take discrete values.
+
+## 2. WAVE-PARTICLE DUALITY: 
+
+Subatomic particles, electrons, and photons can exhibit both particle and wave properties, depending on how they are observed.
+
+## 3. UNCERTAINTY PRINCIPLE:
+
+Formulated by Werner Heisenberg, this principle states that there are fundamental limits to the precision with which certain properties, such as a particle's position and momentum, can be known.
+
+## 4. SUPERPOSITION:
+
+Particles can exist in multiple states at the same time until a measurement is made, at which moment the states collapse into a defined one.
+
+## 5. ENTANGLEMENT:
+
+Particles that have interacted with each other can remain correlated in such a way that the state of one particle is instantly related to the state of the other, no matter the distance separating them.
 
